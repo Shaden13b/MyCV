@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shaden Alkhalifah - Portfolio</title>
+<link rel="icon" href="icon1.jpg" type="image/jpeg" />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --clr-bg-dark: #050814;
+    --clr-bg-light: #e0f7fa;
+    --clr-text-dark: #ffffff;
+    --clr-text-light: #0a0a0a;
+    --clr-accent-dark: #00ffe4;
+    --clr-accent-light: #007acc;
+  }
+  body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: var(--clr-text-dark);
+    overflow-x: hidden;
+    background: var(--clr-bg-dark);
+  }
+  body.light {
+    background: var(--clr-bg-light);
+    color: var(--clr-text-light);
+  }
+
+  .stars {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: transparent url('STARS.gif') repeat;
+    background-size: cover;
+    z-index: -1;
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    z-index: 999;
+    font-family: 'Orbitron', sans-serif;
+  }
+  body.light nav {
+    background: #d0eaff;
+  }
+  nav .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--clr-accent-dark);
+    cursor: default;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0; padding: 0;
+  }
+  nav ul li a {
+    text-decoration: none;
+    color: var(--clr-text-dark);
+    font-weight: 600;
+    transition: color 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+  }
+  body.light nav ul li a {
+    color: var(--clr-text-light);
+  }
+  nav ul li a.active,
+  nav ul li a:hover {
+    color: var(--clr-accent-dark);
+  }
+  nav .nav-controls {
+    display: flex;
+    gap: 10px;
+  }
+  #langToggle,
+  .mode-toggle {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--clr-text-dark);
+    font-size: 1.3rem;
+    padding: 5px 10px;
+    font-family: 'Orbitron', sans-serif;
+  }
+  body.light #langToggle,
+  body.light .mode-toggle {
+    color: var(--clr-text-light);
+  }
+  header {
+    margin-top: 80px;
+    text-align: center;
+    padding: 30px 20px 50px;
+  }
+  .profile-pic {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 5px solid var(--clr-accent-dark);
+    box-shadow: 0 0 15px var(--clr-accent-dark);
+    animation: pulseGlow 2.5s infinite alternate;
+  }
+  @keyframes pulseGlow {
+    0% {
+      box-shadow: 0 0 15px var(--clr-accent-dark);
+    }
+    100% {
+      box-shadow: 0 0 40px var(--clr-accent-dark);
+    }
+  }
+  #name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.7rem;
+    margin: 10px 0 5px;
+    color: var(--clr-accent-dark);
+  }
+  #tagline {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  main {
+    max-width: 960px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+  }
+
+  section {
+    margin-bottom: 60px;
+    opacity: 0;
+  }
+
+  /* Slide in/out animations */
+  .slide-in-left {
+    animation: slideInLeft 0.7s forwards;
+  }
+  .slide-in-right {
+    animation: slideInRight 0.7s forwards;
+  }
+  .slide-out-left {
+    animation: slideOutLeft 0.7s forwards;
+  }
+  .slide-out-right {
+    animation: slideOutRight 0.7s forwards;
+  }
+
+  @keyframes slideInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes slideInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes slideOutLeft {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+  }
+  @keyframes slideOutRight {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+  }
+
+  /* SECTION HEADERS */
+  section h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    color: var(--clr-accent-dark);
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  /* SUMMARY */
+  #summary {
+    background: rgba(0, 255, 228, 0.1);
+    border: 2px solid var(--clr-accent-dark);
+    border-radius: 15px;
+    padding: 25px 20px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* EXPERIENCE */
+  .exp-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .exp-card {
+    background: rgba(0, 255, 228, 0.1);
+    border: 2px solid var(--clr-accent-dark);
+    border-radius: 12px;
+    padding: 15px 20px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 0 15px var(--clr-accent-dark);
+    transition: background-color 0.3s ease;
+  }
+  .exp-card:hover,
+  .exp-card:focus {
+    background: rgba(0, 255, 228, 0.25);
+  }
+  .exp-header {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--clr-accent-dark);
+  }
+  .exp-details {
+    margin-top: 12px;
+    display: none;
+  }
+  .exp-card.expanded .exp-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    animation: slideInRight 0.5s ease forwards;
+  }
+  .exp-details img {
+    width: 80px;
+    height: auto;
+    border-radius: 8px;
+  }
+  .exp-details p {
+    max-width: 600px;
+  }
+
+  /* EDUCATION */
+  #education .edu-timeline {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(0, 255, 228, 0.1);
+    border: 2px solid var(--clr-accent-dark);
+    border-radius: 12px;
+    padding: 15px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  #education .edu-timeline img {
+    width: 100px;
+    border-radius: 8px;
+  }
+  #education .edu-info {
+    font-size: 1.1rem;
+  }
+  #education strong {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--clr-accent-dark);
+  }
+
+  /* PROJECTS */
+  .proj-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .proj-card {
+    background: rgba(0, 255, 228, 0.1);
+    border: 2px solid var(--clr-accent-dark);
+    border-radius: 12px;
+    padding: 15px 20px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 0 15px var(--clr-accent-dark);
+    transition: background-color 0.3s ease;
+  }
+  .proj-card:hover,
+  .proj-card:focus {
+    background: rgba(0, 255, 228, 0.25);
+  }
+  .proj-header {
+    font-family: 'Orbitron', sans-serif !important;
+    font-size: 1.5rem !important;
+    font-weight: 700;
+    color: var(--clr-accent-dark);
+  }
+  .proj-body {
+    margin-top: 10px;
+    display: none;
+    animation: slideInLeft 0.5s ease forwards;
+  }
+  .proj-card.expanded .proj-body {
+    display: block;
+  }
+  .proj-body img {
+  width: 140px;
+  height: auto;
+}
+
+  /* OTHER */
+  .other-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+    gap: 25px;
+  }
+  #other ul {
+    list-style: none;
+    background: rgba(0,255,234,0.1);
+    border-left: 6px solid var(--clr-accent-dark);
+    border-radius: 10px;
+    padding: 18px 20px;
+    box-shadow: 0 0 20px var(--clr-accent-dark);
+    font-size: 1rem;
+    transition: all 0.5s ease;
+  }
+  body.light #other ul {
+    background: rgba(0,122,204,0.15);
+    border-left-color: var(--clr-accent-light);
+    box-shadow: 0 0 20px var(--clr-accent-light);
+  }
+  #other ul li:first-child {
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+  }
+
+  /* CONTACT section */
+  #contact {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.contact-info a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--clr-accent-dark);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+body.light .contact-info a {
+  color: var(--clr-accent-light);
+}
+
+.contact-info a:hover {
+  color: #00ffe4;
+}
+
+  #contact {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  #contact h2 {
+    margin-bottom: 20px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--clr-accent-dark);
+  }
+  #contact p a {
+    font-size: 1.6rem;
+    margin: 0 12px;
+    color: var(--clr-accent-dark);
+    transition: color 0.3s ease;
+    text-decoration: none;
+  }
+  body.light #contact p a {
+    color: var(--clr-accent-light);
+  }
+  #contact p a:hover {
+    color: var(--clr-text-dark);
+  }
+  body.light #contact p a:hover {
+    color: var(--clr-text-light);
+  }
+  #contact p {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    color: var(--clr-text-dark);
+  }
+  body.light #contact p {
+    color: var(--clr-text-light);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    nav ul {
+      gap: 12px;
+    }
+    #education .edu-timeline {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+    .proj-grid {
+      gap: 20px;
+    }
+    .proj-body img {
+      max-width: 90vw;
+    }
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+    }
+  }
+  @media (max-width: 400px) {
+    nav ul li a {
+      font-size: 0.9rem;
+      padding: 6px 10px;
+    }
+    #langToggle {
+      font-size: 0.9rem;
+      padding: 3px 8px;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="stars" aria-hidden="true"></div>
+
+  <nav aria-label="Primary Navigation">
+    <div class="logo" aria-current="page">Shaden Alkhalifah</div>
+    <ul>
+      <li><a href="#summary" class="nav-link active" tabindex="0">Summary</a></li>
+      <li><a href="#experience" class="nav-link" tabindex="0">Experience</a></li>
+      <li><a href="#education" class="nav-link" tabindex="0">Education</a></li>
+      <li><a href="#projects" class="nav-link" tabindex="0">Projects</a></li>
+      <li><a href="#other" class="nav-link" tabindex="0">Other</a></li>
+      <li><a href="#contact" class="nav-link" tabindex="0">Contact</a></li>
+    </ul>
+    <div class="nav-controls">
+      <button id="langToggle" aria-label="Toggle language">عربي</button>
+      <button class="mode-toggle" aria-label="Toggle light/dark mode">🌙</button>
+    </div>
+  </nav>
+
+  <header>
+    <img src="MyPic.jpg" alt="Profile picture of Shaden Alkhalifah" class="profile-pic" />
+    <h1 id="name">Shaden Alkhalifah</h1>
+    <p id="tagline">Computer Science Undergraduate | Gamer & Developer</p>
+  </header>
+
+  <main>
+
+  <section id="summary" aria-label="Summary">
+    <h2 data-en="SUMMARY" data-ar="الملخص">SUMMARY</h2>
+    <p id="summary-text" data-en="A passionate and motivated Computer Science undergraduate at Qassim University with a strong interest in software and game development. Dedicated to continuous learning and eager to contribute to a dynamic, collaborative work environment. Particularly interested in user interface design and game creation, with solid proficiency in Java programming."
+       data-ar="طالبة علوم حاسب متحمسة ومندفعة في جامعة القصيم مع اهتمام قوي بتطوير البرمجيات والألعاب. مكرسة للتعلم المستمر ومتطلعة للمساهمة في بيئة عمل ديناميكية وتعاونية. مهتمة بشكل خاص بتصميم واجهات المستخدم وصناعة الألعاب، مع إجادة جيدة لبرمجة جافا.">
+      A passionate and motivated Computer Science undergraduate at Qassim University with a strong interest in software and game development. Dedicated to continuous learning and eager to contribute to a dynamic, collaborative work environment. Particularly interested in user interface design and game creation, with solid proficiency in Java programming.
+    </p>
+  </section>
+
+  <section id="experience" aria-label="Experience">
+    <h2 data-en="EXPERIENCE" data-ar="الخبرات">EXPERIENCE</h2>
+    <div class="exp-wrapper">
+      <article class="exp-card" tabindex="0" aria-expanded="false" role="button" aria-controls="exp1" onclick="toggleExpand(this)" onkeypress="keyToggle(event,this)">
+        <div class="exp-header" data-en="Arizona State University / Game Development Camp ONLINE – [2024]" data-ar="جامعة ولاية أريزونا / معسكر تطوير الألعاب عبر الإنترنت - [2024]">
+          Arizona State University / Game Development Camp ONLINE – [2024]
+        </div>
+        <div class="exp-details" id="exp1">
+          <p data-en="Gained experience working in an online development environment, enhancing both teamwork and technical problem-solving skills."
+             data-ar="اكتسبت خبرة في العمل ضمن بيئة تطوير عبر الإنترنت، مما عزز مهارات العمل الجماعي وحل المشكلات التقنية.">
+            Gained experience working in an online development environment, enhancing both teamwork and technical problem-solving skills.
+          </p>
+          <img src="Arizona.jpg" alt="Arizona State University logo" />
+        </div>
+      </article>
+      <article class="exp-card" tabindex="0" aria-expanded="false" role="button" aria-controls="exp2" onclick="toggleExpand(this)" onkeypress="keyToggle(event,this)">
+        <div class="exp-header" data-en="Volunteer in Al - Masjid Al – Haram / Makkah, Saudi Arabia – [2023 - 2024]" data-ar="متطوعة في المسجد الحرام / مكة المكرمة، المملكة العربية السعودية - [2023 - 2024]">
+          Volunteer in Al - Masjid Al – Haram / Makkah, Saudi Arabia – [2023 - 2024]
+        </div>
+        <div class="exp-details" id="exp2">
+          <p data-en="Developed adaptability and patience while working under pressure."
+             data-ar="طورت مهارات التكيف والصبر أثناء العمل تحت الضغط.">
+            Developed adaptability and patience while working under pressure.
+          </p>
+          <img src="Haram.jpg" alt="Al Masjid Al Haram image" />
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="education" aria-label="Education">
+    <h2 data-en="EDUCATION" data-ar="التعليم">EDUCATION</h2>
+    <div class="edu-timeline">
+      <img src="myuni1.jpg" alt="Qassim University logo" />
+      <div class="edu-info">
+        <strong data-en="Qassim University" data-ar="جامعة القصيم">Qassim University</strong><br />
+        <span data-en="Bachelor of Computer Science – Expected 2027" data-ar="بكالوريوس علوم الحاسب – متوقع 2027">
+          Bachelor of Computer Science – Expected 2026
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" aria-label="Projects">
+    <h2 data-en="PROJECTS" data-ar="المشاريع">PROJECTS</h2>
+    <div class="proj-grid">
+      <article class="proj-card" tabindex="0" aria-expanded="false" role="button" aria-controls="proj1" onclick="toggleExpand(this)" onkeypress="keyToggle(event,this)">
+        <div class="proj-header" data-en="2D Game in Java – “The Chemist’s Shop”" data-ar="لعبة ثنائية الأبعاد في جافا – “متجر الكيميائي”">
+          2D Game in Java – “The Chemist’s Shop”
+        </div>
+        <div class="proj-body" id="proj1">
+          <p data-en="A multi-level 2D game where players control a chemist running a store, built using Java."
+             data-ar="لعبة ثنائية الأبعاد متعددة المستويات يتحكم فيها اللاعب بكيميائي يدير المتجر، مبنية باستخدام جافا.">
+            A multi-level 2D game where players control a chemist running a store, built using Java.
+          </p>
+          <img src="Chemist.jpg" alt="The Chemist's Shop game screenshot" loading="lazy" />
+        </div>
+      </article>
+
+      <article class="proj-card" tabindex="0" aria-expanded="false" role="button" aria-controls="proj2" onclick="toggleExpand(this)" onkeypress="keyToggle(event,this)">
+        <div class="proj-header" data-en="3D Solar System Simulation" data-ar="محاكاة النظام الشمسي ثلاثي الأبعاد">
+          3D Solar System Simulation
+        </div>
+        <div class="proj-body" id="proj2">
+          <p data-en="Created with C++ and OpenGL to simulate the movement of planets around the sun in a 3D space."
+             data-ar="تم إنشاؤه باستخدام C++ و OpenGL لمحاكاة حركة الكواكب حول الشمس في فضاء ثلاثي الأبعاد.">
+            Created with C++ and OpenGL to simulate the movement of planets around the sun in a 3D space.
+          </p>
+          <img src="Solar.jpg" alt="3D Solar System Simulation screenshot" loading="lazy" />
+        </div>
+      </article>
+
+      <article class="proj-card" tabindex="0" aria-expanded="false" role="button" aria-controls="proj3" onclick="toggleExpand(this)" onkeypress="keyToggle(event,this)">
+        <div class="proj-header" data-en="Game Platform Concept Design" data-ar="تصميم مفهوم منصة ألعاب">
+          Game Platform Concept Design
+        </div>
+        <div class="proj-body" id="proj3">
+          <p data-en="Developed a conceptual layout and user flow for a centralized game platform."
+             data-ar="تم تطوير تصميم مفاهيمي وتدفق مستخدم لمنصة ألعاب مركزية.">
+            Developed a conceptual layout and user flow for a centralized game platform.
+          </p>
+          <img src="dragonball.jpg" alt="Game Platform Concept Design image" loading="lazy" />
+        </div>
+      </article>
+
+      <article class="proj-card" tabindex="0" aria-expanded="false" role="button" aria-controls="proj4" onclick="toggleExpand(this)" onkeypress="keyToggle(event,this)">
+        <div class="proj-header" data-en="Online Food Ordering in Java – 'TastyGo'" data-ar="طلب الطعام أونلاين في جافا – 'TastyGo'">
+          Online Food Ordering in Java – "TastyGo"
+        </div>
+        <div class="proj-body" id="proj4">
+          <p data-en="Built a Java application with a user interface for login, food ordering, and delivery tracking."
+             data-ar="بُني تطبيق جافا بواجهة مستخدم لتسجيل الدخول، وطلب الطعام، وتتبع التوصيل.">
+            Built a Java application with a user interface for login, food ordering, and delivery tracking.
+          </p>
+          <img src="TastyGo.jpg" alt="TastyGo app screenshot" loading="lazy" />
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="other" aria-label="Other">
+    <h2 data-en="OTHER" data-ar="أخرى">OTHER</h2>
+    <div class="other-grid" tabindex="0" role="list">
+      <ul role="listitem" aria-label="Technical Skills">
+        <li>Technical Skills:</li>
+        <li>Java, C++, OpenGL</li>
+        <li>Microsoft Word & PowerPoint</li>
+      </ul>
+      <ul role="listitem" aria-label="Soft Skills">
+        <li>Soft Skills:</li>
+        <li>Passion for continuous learning</li>
+        <li>Strong attention to detail and commitment</li>
+      </ul>
+      <ul role="listitem" aria-label="Workshops & Programs">
+        <li>Workshops & Programs:</li>
+        <li>Innovative Systems Design – Workshop on modern system building technologies</li>
+        <li>Game Development Bootcamp – Local program focused on game development fundamentals</li>
+      </ul>
+      <ul role="listitem" aria-label="Languages">
+        <li>Languages:</li>
+        <li>Arabic</li>
+        <li>English</li>
+      </ul>
+    </div>
+  </section>
+<section id="contact" aria-label="Contact">
+  <h2 data-en="CONTACT" data-ar="تواصل">CONTACT</h2>
+  <div class="contact-info">
+    <div class="contact-item">
+      <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.91.76a1 1 0 011 1V20a1 1 0 01-1 1C10.85 21 3 13.15 3 3a1 1 0 011-1h3.5a1 1 0 011 1c0 1.38.27 2.7.76 3.91a1 1 0 01-.21 1.11l-2.2 2.2z"/>
+      </svg>
+      +966 *****1291
+    </div>
+
+    <div class="contact-item">
+      <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M4 4h16c1.1 0 1.99.9 1.99 2L22 18c0 1.1-.9 2-2 2H4a2 2 0 01-2-2V6c0-1.1.9-2 2-2zm8 7l8-5H4l8 5zm0 2l-8-5v10h16V8l-8 5z"/>
+      </svg>
+      shaden***@gmail.com
+    </div>
+
+    <div class="contact-item">
+      <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.6v2.2h.05c.5-.95 1.8-1.95 3.7-1.95 4 0 4.75 2.6 4.75 5.9V24h-4v-7.5c0-1.8-.03-4.1-2.5-4.1s-2.9 1.95-2.9 4v7.6h-4V8z"/>
+      </svg>
+      Shaden Alkhalifah
+    </div>
+  </div>
+</section>
+
+<script>
+  // Toggle dark/light mode (untouched as requested)
+  const modeToggle = document.querySelector('.mode-toggle');
+  modeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light');
+    modeToggle.textContent = document.body.classList.contains('light') ? '☀️' : '🌙';
+  });
+
+  // Toggle language button (optional, basic Arabic toggle)
+  const langToggle = document.getElementById('langToggle');
+  langToggle.addEventListener('click', () => {
+    const isArabic = langToggle.textContent === 'عربي';
+    document.documentElement.lang = isArabic ? 'ar' : 'en';
+    langToggle.textContent = isArabic ? 'English' : 'عربي';
+    // Switch texts
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.textContent = isArabic ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+    });
+  });
+
+  // Expand/collapse for experience and projects
+  function toggleExpand(el) {
+    const expanded = el.classList.toggle('expanded');
+    el.setAttribute('aria-expanded', expanded);
+  }
+  function keyToggle(e, el) {
+    if(e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleExpand(el);
+    }
+  }
+
+  // Scroll reveal animations for sections
+  const sectionsToAnimate = document.querySelectorAll('main section');
+  function handleScrollAnimations() {
+    const triggerBottom = window.innerHeight * 0.85;
+
+    sectionsToAnimate.forEach((section, idx) => {
+      const sectionTop = section.getBoundingClientRect().top;
+
+      if (sectionTop < triggerBottom && sectionTop > 0) {
+        if (!section.classList.contains('slide-in-left') && !section.classList.contains('slide-in-right')) {
+          if (idx % 2 === 0) {
+            section.classList.remove('slide-out-left', 'slide-out-right');
+            section.classList.add('slide-in-left');
+          } else {
+            section.classList.remove('slide-out-left', 'slide-out-right');
+            section.classList.add('slide-in-right');
+          }
+        }
+      } else {
+        if (idx % 2 === 0) {
+          section.classList.remove('slide-in-left', 'slide-in-right');
+          section.classList.add('slide-out-left');
+        } else {
+          section.classList.remove('slide-in-left', 'slide-in-right');
+          section.classList.add('slide-out-right');
+        }
+      }
+    });
+  }
+  window.addEventListener('scroll', handleScrollAnimations);
+  handleScrollAnimations();
+
+  // Navigation link active state on scroll
+  const navLinks = document.querySelectorAll('nav ul li a');
+  window.addEventListener('scroll', () => {
+    let fromTop = window.scrollY + 90;
+    navLinks.forEach(link => {
+      const section = document.querySelector(link.hash);
+      if(section && section.offsetTop <= fromTop && (section.offsetTop + section.offsetHeight) > fromTop) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  });
+
+  // Smooth scroll on nav click
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(link.hash).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
